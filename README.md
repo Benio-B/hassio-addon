@@ -4,3 +4,4 @@ Ajouter les addons dans le directory `addons/` Ã  la racine de home assistant (Ã
 
 Addons actuels:
 - PairDrop (sur le port 3003)
+- Rclone Backup

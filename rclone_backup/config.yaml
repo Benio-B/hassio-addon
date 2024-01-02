@@ -1,0 +1,72 @@
+---
+name: Rclone Backup Benio
+version: 3.1.0
+slug: rclone_backup_benio
+description: Automatically sync backup to remote locations using rclone
+arch:
+  - armhf
+  - armv7
+  - aarch64
+  - amd64
+  - i386
+init: false
+url: https://github.com/jcwillox/hassio-rclone-backup
+startup: application
+boot: auto
+homeassistant_api: true
+ingress: true
+panel_icon: mdi:cloud-sync
+map:
+  - config:rw
+  - backup:rw
+  - share:ro
+  - ssl:ro
+  - media:rw
+options:
+  jobs:
+    - name: Sync Daily Backups
+      schedule: 10 4 * * *
+      command: sync
+      sources:
+        - "/backup"
+      destination: google:/Backup/Home Assistant
+      include: []
+      exclude: []
+      flags: {}
+  dry_run: true
+  config_path: "/config/rclone.conf"
+schema:
+  jobs:
+    - name: str?
+      schedule: str?
+      command: str
+      source: str?
+      sources:
+        - str?
+      destination: str?
+      destinations:
+        - str?
+      include:
+        - str?
+      exclude:
+        - str?
+      flags: "match({(('[^ ]+': *?('([^']|(?<=\\\\)')*'|None|False|True))(, *?'[^ ]+': *?('([^']|(?<=\\\\)')*'|None|False|True))*)?})?"
+      extra_flags:
+        - str?
+  dry_run: bool?
+  flags: "match({(('[^ ]+': *?('([^']|(?<=\\\\)')*'|None|False|True))(, *?'[^ ]+': *?('([^']|(?<=\\\\)')*'|None|False|True))*)?})?"
+  extra_flags:
+    - str?
+  run_once: bool?
+  config_path: str?
+  rclone_config: str?
+  no_rename: bool?
+  no_unrename: bool?
+  no_slugify: bool?
+  log_level: list(debug|info|warning|error|fatal)?
+image: ghcr.io/jcwillox/hassio-rclone-backup/{arch}
+devices:
+  - /dev/fuse
+privileged:
+  - SYS_ADMIN
+apparmor: false
