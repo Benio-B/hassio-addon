@@ -1,5 +1,5 @@
 name: Pairdrop
-version: 1.10.2
+version: 1.10.6
 slug: pairdrop
 description:
   Pairdrop is a AirDrop-like progressive web app that transfers files between
@@ -11,7 +11,8 @@ arch:
 url: https://github.com/schlagmichdoch/pairdrop
 webui: "[PROTO:ssl]://[HOST]:[PORT:3000]"
 ports:
-  3000/tcp: 3003 # home.local:3003
+  3000/tcp: 3003
 ports_description:
   3000/tcp: web interface
+apparmor: true
 init: false
