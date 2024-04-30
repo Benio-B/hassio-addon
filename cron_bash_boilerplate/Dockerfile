@@ -3,6 +3,8 @@ FROM $BUILD_FROM
 
 WORKDIR /data
 
+RUN mkdir -p /app
+
 # Copy data for add-on
 COPY run.sh /
 COPY test_cron.sh /
