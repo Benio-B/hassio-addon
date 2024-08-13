@@ -1,0 +1,4 @@
+---
+build_from:
+  aarch64: ghcr.io/benio-b/publish-packages/my-image-test:sha-00a2d66
+args: {}
