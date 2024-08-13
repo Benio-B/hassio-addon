@@ -4,7 +4,7 @@ version: "1.0.0"
 slug: "cron_bash_boilerplate"
 init: false
 map:
-  - config:rw
+  - addon_config:rw
   - share:rw
 arch:
   - aarch64
