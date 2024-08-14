@@ -1,0 +1,7 @@
+build_from:
+  aarch64: "ghcr.io/gethomepage/homepage:latest"
+  amd64: "ghcr.io/gethomepage/homepage:latest"
+  armv7: "ghcr.io/gethomepage/homepage:latest"
+labels:
+  org.opencontainers.image.title: "Homepage addon"
+  org.opencontainers.image.source: "https://gethomepage.dev"
