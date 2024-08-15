@@ -1,6 +1,6 @@
 ---
 name: Rclone Backup Benio
-version: 3.1.0
+version: 3.3.1
 slug: rclone_backup_benio
 description: Automatically sync backup to remote locations using rclone
 arch:
@@ -11,17 +11,17 @@ arch:
   - i386
 init: false
 url: https://github.com/jcwillox/hassio-rclone-backup
-startup: application
-boot: auto
 homeassistant_api: true
 ingress: true
 panel_icon: mdi:cloud-sync
 map:
-  - config:rw
+  - addons:rw
+  - all_addon_configs:rw
   - backup:rw
+  - homeassistant_config:rw
+  - media:rw
   - share:rw
   - ssl:ro
-  - media:rw
 options:
   jobs:
     - name: Sync Daily Backups
