@@ -1,0 +1,23 @@
+#!/command/with-contenv bashio
+
+set -e
+
+bashio::log.info "Getting env configuration"
+
+POSTGRES_USER=$(bashio::config 'POSTGRES_USER' 'postgres')
+POSTGRES_PASSWORD=$(bashio::config 'POSTGRES_PASSWORD')
+POSTGRES_IP=$(bashio::config 'POSTGRES_IP' 'homeassistant.local')
+POSTGRES_PORT=$(bashio::config 'POSTGRES_PORT' 5432)
+JWT_SECRET=$(bashio::config 'JWT_SECRET')
+
+bashio::log.info "Applied config : POSTGRES_USER=${POSTGRES_USER}, POSTGRES_IP=${POSTGRES_IP}, POSTGRES_PORT=${POSTGRES_PORT}"
+
+export POSTGRES_USER
+export POSTGRES_PASSWORD
+export POSTGRES_IP
+export POSTGRES_PORT
+export JWT_SECRET
+
+cd /app
+ls -l;
+/entry.sh;

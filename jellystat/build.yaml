@@ -1,0 +1,7 @@
+build_from:
+  aarch64: "cyfershepard/jellystat:latest"
+  amd64: "cyfershepard/jellystat:latest"
+  armv7: "cyfershepard/jellystat:latest"
+labels:
+  org.opencontainers.image.title: "Jellystat"
+  org.opencontainers.image.source: "https://github.com/CyferShepard/Jellystat"
