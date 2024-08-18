@@ -19,5 +19,5 @@ export POSTGRES_PORT
 export JWT_SECRET
 
 cd /app
-ls -l;
+
 /entry.sh;
