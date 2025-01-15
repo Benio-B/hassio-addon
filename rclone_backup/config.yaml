@@ -1,6 +1,6 @@
 ---
 name: Rclone Backup Benio
-version: 3.3.1
+version: 3.3.4
 slug: rclone_backup_benio
 description: Automatically sync backup to remote locations using rclone
 arch:
@@ -34,7 +34,7 @@ options:
       exclude: []
       flags: {}
   dry_run: true
-  config_path: "/config/rclone.conf"
+  config_path: "/homeassistant/rclone.conf"
 schema:
   jobs:
     - name: str?

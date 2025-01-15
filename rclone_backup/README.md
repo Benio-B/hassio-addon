@@ -1,4 +1,4 @@
-Fork of https://github.com/jcwillox/hass-auto-backup
+Fork of https://github.com/jcwillox/hass-auto-backup to have 2 instances of rClone
 
 # Rclone Backup
 Backup your Home Assistant configuration or backups to over [70 cloud providers](https://rclone.org/#providers) using [Rclone](https://rclone.org/).
