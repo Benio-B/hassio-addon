@@ -6,7 +6,7 @@ FROM $BUILD_FROM
 RUN apk add --no-cache nodejs npm pnpm git
 
 # Set working directory
-WORKDIR /opt/homepage
+WORKDIR /app
 
 # Clone Homepage source
 RUN git clone --depth 1 https://github.com/gethomepage/homepage.git . \

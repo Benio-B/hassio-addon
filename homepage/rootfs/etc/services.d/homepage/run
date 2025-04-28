@@ -9,7 +9,14 @@ export HOMEPAGE_ALLOWED_HOSTS="${ALLOWED_HOSTS}"
 # Log startup
 bashio::log.info "Starting Homepage with allowed hosts: ${ALLOWED_HOSTS}"
 
-cd /opt/homepage/
+if [ -d "/app/config" ]; then
+    rm -rf /app/config
+    bashio::log.info "Delete existing /app/config"
+fi
+
+ln -s /config /app/config
+
+cd /app
 
 # Start Homepage app
 pnpm start
