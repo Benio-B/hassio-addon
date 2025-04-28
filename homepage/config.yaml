@@ -1,5 +1,5 @@
 name: Homepage
-version: 1.1.0
+version: 1.1.0-fix0428
 slug: homepage
 description:
   A modern, fully static, fast, secure fully proxied, highly customizable application dashboard
@@ -18,3 +18,7 @@ ports_description:
   3000/tcp: web interface
 apparmor: true
 init: false
+options:
+  allowed_hosts: "*"
+schema:
+  allowed_hosts: str

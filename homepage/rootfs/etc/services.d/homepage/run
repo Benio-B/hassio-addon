@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bashio
+
+# Read options
+ALLOWED_HOSTS=$(bashio::config 'allowed_hosts')
+
+# Set environment variables
+export HOMEPAGE_ALLOWED_HOSTS="${ALLOWED_HOSTS}"
+
+# Log startup
+bashio::log.info "Starting Homepage with allowed hosts: ${ALLOWED_HOSTS}"
+
+cd /opt/homepage/
+
+# Start Homepage app
+pnpm start

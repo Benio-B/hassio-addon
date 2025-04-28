@@ -1,0 +1,4 @@
+name: "Homepage"
+description: "A modern dashboard for your server or services."
+options:
+  allowed_hosts: "Allowed Hosts (comma-separated or *, with Port). Ex: 192.168.1.76:3030,localhost"
