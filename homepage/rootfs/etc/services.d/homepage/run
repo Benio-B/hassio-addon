@@ -9,6 +9,11 @@ export HOMEPAGE_ALLOWED_HOSTS="${ALLOWED_HOSTS}"
 # Log startup
 bashio::log.info "Starting Homepage with allowed hosts: ${ALLOWED_HOSTS}"
 
+if [ -z "$(ls -A "/config")" ]; then 
+    cp -r /app/config/* /config/.
+    bashio::log.info "Copy existing /app/config to /config"
+fi
+
 if [ -d "/app/config" ]; then
     rm -rf /app/config
     bashio::log.info "Delete existing /app/config"
