@@ -1,0 +1,27 @@
+name: Toilette Royale
+version: 0.1.3
+description: "Suivez votre consommation de papier toilette avec style."
+slug: "toilette_royale"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+apparmor: false
+ports:
+  2332/tcp: 2332
+webui: "[PROTO:ssl]://[HOST]:[PORT:2332]"
+ports_description:
+  2332/tcp: web interface
+
+options:
+  VITE_JSONBIN_MASTER_KEY: ""
+  VITE_JSONBIN_ACCESS_KEY: ""
+  VITE_JSONBIN_ID: ""
+  VITE_JSONBIN_USE: false
+
+schema:
+  VITE_JSONBIN_MASTER_KEY: str?
+  VITE_JSONBIN_ACCESS_KEY: str?
+  VITE_JSONBIN_ID: str?
+  VITE_JSONBIN_USE: bool
