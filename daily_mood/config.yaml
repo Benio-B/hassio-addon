@@ -1,0 +1,23 @@
+name: Daily Mood Tracker
+version: 0.0.1-alpha
+description: "Suivi d'humeur journalier (pour voir comment qu'ça va au quotidien)"
+slug: "daily_mood_tracker"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+apparmor: false
+ports:
+  5173/tcp: 5173
+webui: "[PROTO:ssl]://[HOST]:[PORT:5173]"
+ports_description:
+  5173/tcp: web interface
+
+options:
+  VITE_SUPABASE_URL: ""
+  VITE_SUPABASE_ANON_KEY: ""
+
+schema:
+  VITE_SUPABASE_URL: str
+  VITE_SUPABASE_ANON_KEY: str
