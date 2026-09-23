@@ -28,7 +28,7 @@ ENV BUILD_STANDALONE true
 # Empty CMD because S6 overlay will start services
 CMD []
 
-
+ARG BUILD_VERSION
 ARG BUILD_DESCRIPTION
 LABEL \
     io.hass.description="${BUILD_DESCRIPTION}" \
