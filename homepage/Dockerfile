@@ -1,3 +1,5 @@
+ARG BUILD_FROM
+
 # --- Stage 1: build avec Node officiel (version garantie) ---
 FROM node:22-alpine AS builder
 
@@ -11,7 +13,6 @@ RUN git clone --depth 1 https://github.com/gethomepage/homepage.git . \
     && pnpm build
 
 # --- Stage 2: image finale Home Assistant ---
-ARG BUILD_FROM
 FROM $BUILD_FROM
 
 RUN apk add --no-cache nodejs npm
