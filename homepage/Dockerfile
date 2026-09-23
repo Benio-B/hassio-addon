@@ -15,7 +15,8 @@ RUN git clone --depth 1 https://github.com/gethomepage/homepage.git . \
 # --- Stage 2: image finale Home Assistant ---
 FROM $BUILD_FROM
 
-RUN apk add --no-cache nodejs npm
+RUN apk add --no-cache nodejs npm git \
+    && npm install -g pnpm
 
 WORKDIR /app
 COPY --from=builder /app /app
