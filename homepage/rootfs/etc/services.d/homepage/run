@@ -5,6 +5,8 @@ ALLOWED_HOSTS=$(bashio::config 'allowed_hosts')
 
 # Set environment variables
 export HOMEPAGE_ALLOWED_HOSTS="${ALLOWED_HOSTS}"
+export PORT=3000
+export HOSTNAME="0.0.0.0"
 
 # Log startup
 bashio::log.info "Starting Homepage with allowed hosts: ${ALLOWED_HOSTS}"
@@ -23,5 +25,5 @@ ln -s /config /app/config
 
 cd /app
 
-# Start Homepage app
-pnpm start
+# Start Homepage app (mode standalone)
+node server.js

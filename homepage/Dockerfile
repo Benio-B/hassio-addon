@@ -15,11 +15,15 @@ RUN git clone --depth 1 https://github.com/gethomepage/homepage.git . \
 # --- Stage 2: image finale Home Assistant ---
 FROM $BUILD_FROM
 
-RUN apk add --no-cache nodejs npm git \
-    && npm install -g pnpm
+# Copie le runtime Node complet depuis le builder (même version que le build)
+COPY --from=builder /usr/local/bin/node /usr/local/bin/node
+COPY --from=builder /usr/local/lib/node_modules /usr/local/lib/node_modules
 
 WORKDIR /app
-COPY --from=builder /app /app
+COPY --from=builder /app/.next/standalone ./
+COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/config ./config
 
 COPY rootfs/ /
 
