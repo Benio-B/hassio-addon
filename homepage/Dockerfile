@@ -3,7 +3,7 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Install needed tools
-RUN apk add --no-cache nodejs npm git \
+RUN apk add --no-cache nodejs-current npm git \
     && npm install -g pnpm
 
 # Set working directory
