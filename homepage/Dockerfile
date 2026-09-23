@@ -3,7 +3,8 @@ ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Install needed tools
-RUN apk add --no-cache nodejs npm pnpm git
+RUN apk add --no-cache nodejs npm git \
+    && npm install -g pnpm
 
 # Set working directory
 WORKDIR /app
@@ -22,8 +23,8 @@ RUN chmod +x /etc/services.d/homepage/run
 RUN chmod +x /etc/services.d/homepage/finish
 
 # Set environment variables
-ENV LANG C.UTF-8
-ENV BUILD_STANDALONE true
+ENV LANG=C.UTF-8
+ENV BUILD_STANDALONE=true
 
 # Empty CMD because S6 overlay will start services
 CMD []
