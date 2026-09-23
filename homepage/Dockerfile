@@ -1,32 +1,32 @@
-# Build from Home Assistant base
-ARG BUILD_FROM
-FROM $BUILD_FROM
+# --- Stage 1: build avec Node officiel (version garantie) ---
+FROM node:22-alpine AS builder
 
-# Install needed tools
-RUN apk add --no-cache nodejs-current npm git \
-    && npm install -g pnpm
+RUN npm install -g pnpm \
+    && apk add --no-cache git
 
-# Set working directory
 WORKDIR /app
 
-# Clone Homepage source
 RUN git clone --depth 1 https://github.com/gethomepage/homepage.git . \
     && pnpm install --frozen-lockfile \
     && pnpm build
 
-# Copy our S6 services and startup scripts
+# --- Stage 2: image finale Home Assistant ---
+ARG BUILD_FROM
+FROM $BUILD_FROM
+
+RUN apk add --no-cache nodejs npm
+
+WORKDIR /app
+COPY --from=builder /app /app
+
 COPY rootfs/ /
 
-# Make sure the S6 service files are executable
-RUN chmod +x /etc/services.d/homepage/run
+RUN chmod +x /etc/services.d/homepage/run \
+    && chmod +x /etc/services.d/homepage/finish
 
-RUN chmod +x /etc/services.d/homepage/finish
-
-# Set environment variables
 ENV LANG=C.UTF-8
 ENV BUILD_STANDALONE=true
 
-# Empty CMD because S6 overlay will start services
 CMD []
 
 ARG BUILD_VERSION
